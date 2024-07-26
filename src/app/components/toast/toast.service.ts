@@ -5,7 +5,7 @@ import { ToastService } from '@siemens/ix-angular';
   providedIn: 'root'
 })
 export class CustomToastService {
-  private customToastRef!: TemplateRef<any>;
+  private customToastRef: TemplateRef<any> | null = null;
 
   constructor(private readonly toastService: ToastService) {}
 
@@ -17,6 +17,11 @@ export class CustomToastService {
     if (this.customToastRef) {
       this.toastService.show({
         message: this.customToastRef,
+        icon: 'double-check',
+        iconColor: 'green',
+        type: 'success',
+        autoClose: true,
+        autoCloseDelay: 5000
       });
     } else {
       console.error('CustomToastRef is not set.');

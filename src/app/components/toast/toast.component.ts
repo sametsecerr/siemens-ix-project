@@ -6,8 +6,7 @@ import { CustomToastService } from './toast.service';
   template: `
     <ng-template #customToast let-toast>
       <div>
-        <div>Custom toast message</div>
-        <ix-button (click)="toast.close('Action')">Action</ix-button>
+        <div>İşlem Başarılı</div>
       </div>
     </ng-template>
   `,

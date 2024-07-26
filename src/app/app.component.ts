@@ -9,10 +9,12 @@ export class AppComponent implements OnInit {
   title = 'siemens-ix-project';
   loading = true;
 
-  ngOnInit() {
 
+  logoPath: string = 'assets/images/logo.svg';
+
+  ngOnInit() {
     setTimeout(() => {
       this.loading = false;
-    }, 0);
+    }, 2000);
   }
 }

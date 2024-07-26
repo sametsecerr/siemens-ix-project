@@ -1,0 +1,63 @@
+<div class="d-flex align-items-center flex-column justify-content-center w-100">
+  <ix-typography format="h2" class="d-flex align-items-center justify-content-center">
+    Bize Ulaşın
+  </ix-typography>
+  <form
+      class="row g-3 needs-validation d-flex flex-column w-75"
+      [ngClass]="{ 'was-validated': wasValidated }"
+      no-validate
+      (submit)="onSubmit($event)"
+    >
+      <div class="col-12">
+        <label for="validationCustom01" class="form-label">
+          İsim
+        </label>
+        <input
+          name="firstName"
+          type="text"
+          id="validationCustom01"
+          [(ngModel)]="data.firstName"
+          #firstName="ngModel"
+          required
+        />
+        <div class="valid-feedback">İyi Görünüyor!</div>
+        <div class="invalid-feedback">Bu alan boş bırakılamaz.</div>
+
+      </div>
+      <div class="col-12">
+          <label for="validationCustom02" class="form-label">
+            Soyisim
+          </label>
+          <input
+            name="lastName"
+            type="text"
+            id="validationCustom02"
+            [(ngModel)]="data.lastName"
+            #lastName="ngModel"
+            required
+          />
+          <div class="valid-feedback">İyi Görünüyor!</div>
+          <div class="invalid-feedback">Bu alan boş bırakılamaz.</div>
+      </div>
+      <div class="col-12">
+        <label for="validationCustomEmail" class="form-label">
+          Email
+        </label>
+        <input
+          name="email"
+          type="email"
+          id="validationCustomEmail"
+          aria-describedby="inputGroupPrepend"
+          [(ngModel)]="data.email"
+          #userName="ngModel"
+          required
+        />
+        <div class="valid-feedback">İyi Görünüyor!</div>
+        <div class="invalid-feedback">Bu alan boş bırakılamaz.</div>
+      </div>
+      <div class="col-12 mt-5">
+        <button class="btn btn-primary w-100" type="submit">Gönder</button>
+      </div>
+    </form>
+
+</div>

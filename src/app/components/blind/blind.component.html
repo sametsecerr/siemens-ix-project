@@ -1,0 +1,8 @@
+<ix-typography format="h2" class="d-flex mb-4 align-items-center justify-content-center">
+  Sıkça Sorulan Sorular(S.S.S)
+</ix-typography>
+<div *ngFor="let faq of faqs" class="mb-3">
+  <ix-blind [label]="faq.faq_title">
+    {{ faq.faq_answer }}
+  </ix-blind>
+</div>

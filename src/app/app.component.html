@@ -1,13 +1,15 @@
-<!-- app.component.html -->
-
-<div>
+<!-- <div *ngIf="loading" class="position-fixed w-100 h-100 d-flex align-items-center justify-content-center" style="z-index:9999; background-color: var(--theme-color-secondary);">
+  <app-spinner-large></app-spinner-large>
+</div> -->
+<div *ngIf="!loading">
   <ix-application>
     <ix-application-header name="My Application">
       <div class="placeholder-logo" slot="logo"></div>
     </ix-application-header>
 
-    <ix-content>
+    <ix-content *ngIf="!loading">
       <router-outlet></router-outlet>
     </ix-content>
   </ix-application>
 </div>
+<app-toast></app-toast>

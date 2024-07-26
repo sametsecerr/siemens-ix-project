@@ -1,0 +1,14 @@
+[
+  {
+    "faq_title": "Siemens IX Nedir?",
+    "faq_answer": "Siemens IX, web uygulamaları oluşturmak için UI bileşenleri sağlayan bir kütüphanedir."
+  },
+  {
+    "faq_title": "Siemens IX Nasıl Kurulur?",
+    "faq_answer": "Siemens IX'i kurmak için şu komutu çalıştırabilirsiniz: npm install @siemens/ix-angular."
+  },
+  {
+    "faq_title": "Siemens IX Açık Kaynak mı?",
+    "faq_answer": "Evet, Siemens IX açık kaynaklıdır ve kaynak kodunu GitHub'da bulabilirsiniz."
+  }
+]

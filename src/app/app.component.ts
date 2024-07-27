@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'siemens-ix-project';
   loading = true;
-
-
-  logoPath: string = 'assets/images/logo.svg';
+  constructor(private router: Router) {}
+  goToProductList() {
+    this.router.navigate(['/product-list']);
+  }
+  goToHome() {
+    this.router.navigate(['/home']);
+  }
+  goToFavorites() {
+    this.router.navigate(['/favorites']);
+  }
 
   ngOnInit() {
     setTimeout(() => {

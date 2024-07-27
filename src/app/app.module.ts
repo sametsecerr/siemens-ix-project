@@ -12,7 +12,8 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { FormComponent } from './components/form/form.component';
 import { IxModule } from '@siemens/ix-angular';
 import { ToastComponent } from './components/toast/toast.component';
-import { CustomToastService } from './components/toast/toast.service';  // ToastService'i import edin
+import { CustomToastService } from './components/toast/toast.service';
+import { FavoritesComponent } from './pages/favorites/favorites.component';  // ToastService'i import edin
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CustomToastService } from './components/toast/toast.service';  // Toast
      BlindComponent,
     FormComponent,
     ToastComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,

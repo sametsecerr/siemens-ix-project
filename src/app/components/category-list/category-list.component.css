@@ -1,0 +1,15 @@
+/* Kategori listeleme stilleri */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.category-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.category-item:hover {
+  background-color: #f0f0f0;
+}

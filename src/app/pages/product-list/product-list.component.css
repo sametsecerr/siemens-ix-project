@@ -1,0 +1,6 @@
+/* Ürün listeleme için temel stiller */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

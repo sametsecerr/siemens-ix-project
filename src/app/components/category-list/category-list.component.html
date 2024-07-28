@@ -1,0 +1,5 @@
+<div class="category-list">
+  <div *ngFor="let category of categories" class="category-item" (click)="selectCategory(category.id)">
+    {{ category.name }}
+  </div>
+</div>

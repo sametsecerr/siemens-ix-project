@@ -13,7 +13,11 @@ import { FormComponent } from './components/form/form.component';
 import { IxModule } from '@siemens/ix-angular';
 import { ToastComponent } from './components/toast/toast.component';
 import { CustomToastService } from './components/toast/toast.service';
-import { FavoritesComponent } from './pages/favorites/favorites.component';  // ToastService'i import edin
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { SearchComponent } from './components/search/search.component';
+import { SelectComponent } from './components/select/select.component';  // ToastService'i import edin
 
 
 @NgModule({
@@ -26,6 +30,10 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';  // 
     FormComponent,
     ToastComponent,
     FavoritesComponent,
+    ProductCardComponent,
+    CategoryListComponent,
+    SearchComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,

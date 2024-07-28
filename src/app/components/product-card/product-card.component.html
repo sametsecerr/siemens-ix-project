@@ -1,0 +1,8 @@
+<div class="product-card">
+  <h3>{{ product.name }}</h3>
+  <p>Kategori: {{ product.category }}</p>
+  <p>Fiyat: ${{ product.price }}</p>
+  <p>Stok Durumu: {{ product.in_stock ? 'Stokta Var' : 'Stokta Yok' }}</p>
+  <p>Puan: {{ product.rating }} / 5</p>
+  <p>İndirim: %{{ product.discount }}</p>
+</div>

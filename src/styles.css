@@ -1,4 +1,6 @@
+
 @import '@siemens/ix/dist/siemens-ix/siemens-ix.css';
+
 
 .text-smns-primary{
   color: var(--theme-color-primary);

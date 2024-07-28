@@ -9,7 +9,7 @@ export class ProductListComponent implements OnInit {
   products = productsData;
   filteredProducts = productsData;
   searchQuery: string = '';
-  selectedCategory: number = 0;  // Kategori ID'yi saklayacak
+  selectedCategory: number = 0;
   sortOption: string = 'reviews';
 
   ngOnInit(): void {
@@ -34,12 +34,10 @@ export class ProductListComponent implements OnInit {
   filterProducts() {
     let filtered = this.products;
 
-    // Kategoriye göre filtreleme
     if (this.selectedCategory !== 0) {
       filtered = filtered.filter(product => product.category_id === this.selectedCategory);
     }
 
-    // Arama sorgusuna göre filtreleme
     if (this.searchQuery) {
       filtered = filtered.filter(product =>
         product.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
@@ -47,7 +45,6 @@ export class ProductListComponent implements OnInit {
       );
     }
 
-    // Sıralama
     switch (this.sortOption) {
       case 'reviews':
         filtered.sort((a, b) => b.reviews - a.reviews);

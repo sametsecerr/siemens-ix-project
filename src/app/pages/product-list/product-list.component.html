@@ -1,20 +1,26 @@
-<div class="product-list-container">
+<div class="product-list-container overflow-hidden">
 
-  <div class="content">
-    <div class="search-sort-bar">
-      <app-search (searchChanged)="onSearchChange($event)"></app-search>
-      <app-select (sortOptionChanged)="onSortOptionChange($event)"></app-select>
-    </div>
+  <div >
+ <ix-content>
+  <div class="search-sort-bar d-flex align-items-center justify-content-between">
+    <app-search (searchChanged)="onSearchChange($event)"></app-search>
+    <app-select (sortOptionChanged)="onSortOptionChange($event)"></app-select>
+  </div>
+ </ix-content>
     <div class="product-list-container d-flex">
       <div class="sidebar">
         <app-category-list (categorySelected)="onCategoryChange($event)"></app-category-list>
       </div>
+
       <ix-layout-grid>
-        <ix-row>
+        <ix-row *ngIf="filteredProducts.length > 0">
           <ix-col size="6" [sizeLg]="3" sizeMd="4" *ngFor="let product of filteredProducts">
-    <app-product-card  [product]="product"></app-product-card>
+    <app-product-card class="h-100 d-block"  [product]="product"></app-product-card>
 
           </ix-col>
+  </ix-row>
+  <ix-row *ngIf="filteredProducts.length === 0">
+    <h2 class="text-center">No Product Found</h2>
   </ix-row>
 </ix-layout-grid>
     </div>

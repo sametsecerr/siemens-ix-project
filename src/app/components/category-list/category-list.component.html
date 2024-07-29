@@ -1,5 +1,11 @@
-<div class="category-list">
-  <div *ngFor="let category of categories" class="category-item" (click)="selectCategory(category.id)">
-    {{ category.name }}
-  </div>
+<ix-content style="max-height: 400px;">
+<div class="d-flex flex-column">
+  <div
+  *ngFor="let category of categories"
+  class="category-item rounded mb-1 mt-1 cursor-pointer"
+  [class.active]="category.id === selectedCategoryId"
+  (click)="selectCategory(category.id)">
+  {{ category.name }}
 </div>
+</div>
+</ix-content>

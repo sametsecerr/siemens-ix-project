@@ -5,3 +5,9 @@
 .text-smns-primary{
   color: var(--theme-color-primary);
 }
+.text-smns-muted{
+  color: var(--theme-color-component-6);
+}
+.cursor-pointer{
+  cursor: pointer;
+}

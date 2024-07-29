@@ -1,1 +1,15 @@
-<p>favorites works!</p>
+<div class="favorite-products">
+  <h2>Your Favorite Products</h2>
+  <div *ngIf="favoriteProducts.length === 0" class="d-flex align-items-center justify-content-center">
+    <p class="text-center">No favorite products found.</p>
+  </div>
+  <div *ngIf="favoriteProducts.length > 0">
+    <ix-layout-grid>
+      <ix-row>
+        <ix-col size="6" [sizeLg]="3" sizeMd="4" *ngFor="let product of favoriteProducts">
+          <app-product-card class="h-100 d-block" [product]="product"></app-product-card>
+        </ix-col>
+      </ix-row>
+    </ix-layout-grid>
+  </div>
+</div>

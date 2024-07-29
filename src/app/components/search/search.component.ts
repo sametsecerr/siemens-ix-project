@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-search',
   template: `
-    <ix-expanding-search (input)="onSearch($event)" placeholder="Search..."></ix-expanding-search>
+    <ix-expanding-search class=" cursor-pointer" (input)="onSearch($event)" placeholder="Search..."></ix-expanding-search>
   `,
 })
 export class SearchComponent {

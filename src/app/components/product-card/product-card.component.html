@@ -1,8 +1,46 @@
-<div class="product-card">
-  <h3>{{ product.name }}</h3>
-  <p>Kategori: {{ product.category }}</p>
-  <p>Fiyat: ${{ product.price }}</p>
-  <p>Stok Durumu: {{ product.in_stock ? 'Stokta Var' : 'Stokta Yok' }}</p>
-  <p>Puan: {{ product.rating }} / 5</p>
-  <p>İndirim: %{{ product.discount }}</p>
+<div class="product-box position-relative">
+  <div class="shadow-box position-absolute"></div>
+  <div class="product-card position-relative h-100 d-flex flex-column align-items-start justify-content-between">
+    <div class="d-flex align-items-center position-relative justify-content-center w-100 mb-2">
+      <img [src]="product.photo" class=" w-100" style="object-fit: cover; height: 225px;" alt="">
+      <div *ngIf="product.discount" class="discount position-absolute">
+        <span class="fw-bold">%{{ product.discount }}</span>
+      </div>
+      <div *ngIf="!product.in_stock" class="out-of-stock fs-4 fw-bold position-absolute d-flex align-items-center justify-content-center">
+        OUT OF STOCK!
+      </div>
+    </div>
+    <h3 class="">{{ product.name }}</h3>
+    <div>
+      <div *ngIf="!product.discount">
+        <span class="fs-4">${{ product.price }}</span>
+      </div>
+      <div *ngIf="product.discount">
+        <div class="d-flex align-items-center gap-2">
+          <span class="fs-4">{{ getDiscountedPrice() }}</span>
+          <span class="text-decoration-line-through text-smns-muted fs-6">${{ product.price }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex mt-2 align-items-center gap-1 justify-content-start">
+      <ng-container *ngFor="let i of [1, 2, 3, 4, 5]; let index = index">
+        <div class="star-container">
+          <ix-icon name="star" size="16" class="empty-star"></ix-icon>
+          <div class="full-star" [ngStyle]="{ 'width.%': index < getStarArray(product.rating).fullStars ? 100 : (index === getStarArray(product.rating).fullStars ? getStarArray(product.rating).fractionalStar * 100 : 0) }">
+            <ix-icon name="star-filled" size="16"></ix-icon>
+          </div>
+        </div>
+      </ng-container>
+      <div class="review-text">
+        ({{ product.reviews }})
+      </div>
+    </div>
+    <div class="w-100 d-flex see-product-btn gap-2 position-absolute p-2">
+      <ix-button outline variant="primary" icon="search" class="d-flex w-100 align-items-center justify-content-center gap-2" style="height: 40px;" (click)="viewProductDetails()">
+        Ürünü İncele
+      </ix-button>
+      <ix-button [outline]="!isFavorite" icon="star" style="height: 40px;" (click)="toggleFavorite()">
+      </ix-button>
+    </div>
+  </div>
 </div>

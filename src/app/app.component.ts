@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   loading = true;
   constructor(private router: Router) {}
   goToProductList() {
-    this.router.navigate(['/product-list']);
+    this.router.navigate(['/products']);
   }
   goToHome() {
     this.router.navigate(['/home']);

@@ -1,8 +1,59 @@
-/* Ürün kartı için temel stiller */
-.product-card {
-  border: 1px solid #ccc;
-  padding: 16px;
-  margin: 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.product-card{
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.see-product-btn{
+  bottom: -70px;
+  transition: var(--theme-medium-time);
+  background-color: var(--theme-color-secondary--hover);
+}
+.product-card:hover .see-product-btn{
+  bottom: 0;
+  transition: var(--theme-medium-time);
+
+
+}
+.star-container {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.empty-star {
+  color: lightgray;
+}
+
+.full-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  color: var(--theme-color-primary);
+}
+.review-text{
+  color: var(--theme-color-component-6);
+}
+.shadow-box{
+  left:-8px;
+  top: -8px;
+  width:52px;
+  height:32px;
+  background-color: var(--theme-color-primary);
+}
+.discount{
+  bottom: 0;
+  left: 0;
+  padding: 6px 12px;
+  background-color: var(--theme-color-primary);
+}
+
+.out-of-stock{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }

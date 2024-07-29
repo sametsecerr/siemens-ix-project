@@ -1,1 +1,6 @@
-<p>select works!</p>
+<ix-select (valueChange)="onValueChange($event.detail)" class="cursor-pointer" [value]="value">
+  <ix-select-item label="Değerlendirme Sayısı" value="reviews"></ix-select-item>
+  <ix-select-item label="Düşük Fiyat" value="lowPrice"></ix-select-item>
+  <ix-select-item label="Yüksek Fiyat" value="highPrice"></ix-select-item>
+  <ix-select-item label="Ürün Puanı" value="rating"></ix-select-item>
+</ix-select>

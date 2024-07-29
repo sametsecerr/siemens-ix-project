@@ -9,7 +9,8 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'product-list', component: ProductListComponent },
+  { path: 'products', redirectTo: '/products/all-products', pathMatch: 'full' },
+  { path: 'products/:category', component: ProductListComponent },
   { path: 'product-detail', component: ProductDetailComponent },
   { path: 'favorites', component: FavoritesComponent }
 

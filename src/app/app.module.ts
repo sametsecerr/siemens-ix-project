@@ -17,7 +17,9 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { SearchComponent } from './components/search/search.component';
-import { SelectComponent } from './components/select/select.component';  // ToastService'i import edin
+import { SelectComponent } from './components/select/select.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @NgModule({
@@ -45,7 +47,8 @@ import { SelectComponent } from './components/select/select.component';  // Toas
   ],
   providers: [
     CustomToastService,
-    provideClientHydration()
+    provideClientHydration(),
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

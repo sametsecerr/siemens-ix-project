@@ -127,4 +127,12 @@ export class ProductListComponent implements OnInit {
     const category = categories.find(cat => cat.path === categoryPath);
     return category ? category.id : 0;
   }
+
+
+  selectedTab = 0;
+
+  changeTab(tabIndex: number) {
+    this.selectedTab = tabIndex;
+  }
+
 }

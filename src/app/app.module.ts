@@ -19,6 +19,10 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { SearchComponent } from './components/search/search.component';
 import { SelectComponent } from './components/select/select.component';
 import { CookieService } from 'ngx-cookie-service';
+import { DetailHeaderComponent } from './components/detail-header/detail-header.component';
+import { ProductDetailFormComponent } from './components/product-detail-form/product-detail-form.component';
+import { AgGridComponent } from './components/ag-grid/ag-grid.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 
@@ -36,6 +40,9 @@ import { CookieService } from 'ngx-cookie-service';
     CategoryListComponent,
     SearchComponent,
     SelectComponent,
+    DetailHeaderComponent,
+    ProductDetailFormComponent,
+    AgGridComponent,
   ],
   imports: [
     BrowserModule,

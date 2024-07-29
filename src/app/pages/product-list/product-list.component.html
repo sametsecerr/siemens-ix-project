@@ -1,4 +1,9 @@
-<div class="product-list-container overflow-hidden">
+<ix-tabs [selected]="selectedTab">
+  <ix-tab-item (click)="changeTab(0)">Grid</ix-tab-item>
+  <ix-tab-item (click)="changeTab(1)">AGGrid</ix-tab-item>
+</ix-tabs>
+
+<div *ngIf="selectedTab === 0" class="product-list-container overflow-hidden">
 
   <div >
  <ix-content>
@@ -25,4 +30,13 @@
 </ix-layout-grid>
     </div>
   </div>
+</div>
+<div *ngIf="selectedTab === 1" >
+  <ix-content>
+    <div class="ag-theme-alpine-dark ag-theme-ix">
+
+    </div>
+
+  </ix-content>
+
 </div>

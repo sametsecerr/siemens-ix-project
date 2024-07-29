@@ -1,0 +1,29 @@
+.discount{
+  padding: 6px 12px;
+}
+.star-container {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.empty-star {
+  color: lightgray;
+}
+
+.full-star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  color: var(--theme-color-primary);
+}
+.muted-text:hover{
+  color: var(--theme-color-primary);
+}
+.product-desc{
+  letter-spacing: 1.2px;
+}

@@ -6,5 +6,4 @@
 }
 .category-item.active{
  background-color: var(--theme-color-secondary--hover);
-
 }

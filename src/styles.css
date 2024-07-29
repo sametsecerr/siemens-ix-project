@@ -1,5 +1,6 @@
 
 @import '@siemens/ix/dist/siemens-ix/siemens-ix.css';
+@import '@siemens/ix-aggrid/dist/ix-aggrid/ix-aggrid.css';
 
 
 .text-smns-primary{
@@ -7,6 +8,15 @@
 }
 .text-smns-muted{
   color: var(--theme-color-component-6);
+}
+.bg-smns-primary{
+  background-color: var(--theme-color-primary);
+}
+.muted-text{
+  color: var(--theme-color-component-6);
+}
+.text-smns-danger{
+  color: var(--theme-color-alarm);
 }
 .cursor-pointer{
   cursor: pointer;

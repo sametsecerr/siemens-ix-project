@@ -34,6 +34,7 @@ export class CategoryListComponent {
 
   @Output() categorySelected = new EventEmitter<number>();
   selectedCategoryId: number = 0;
+  isExpanded: boolean = false;
 
   constructor(private router: Router) {}
 
@@ -44,5 +45,9 @@ export class CategoryListComponent {
       this.router.navigate([`/products/${category.path}`]);
     }
     this.categorySelected.emit(categoryId);
+  }
+
+  toggleCategoryList() {
+    this.isExpanded = !this.isExpanded;
   }
 }

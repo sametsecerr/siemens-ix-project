@@ -10,7 +10,7 @@
       <app-select (sortOptionChanged)="onSortOptionChange($event)"></app-select>
     </div>
   </ix-content>
-  <div class="product-list-container d-flex">
+  <div class="product-list-container d-flex flex-column flex-lg-row">
     <div class="sidebar">
       <app-category-list (categorySelected)="onCategoryChange($event)"></app-category-list>
     </div>
@@ -31,7 +31,7 @@
   <ix-content>
     <app-search-input (searchChanged)="onQuickFilterChanged($event)"></app-search-input>
     <ag-grid-angular
-      style="width: 100%; height: 500px;"
+      style="width: 100%; height: calc(100vh - 200px);"
       class="ag-theme-alpine-dark ag-theme-ix"
       [rowData]="rowData"
       [columnDefs]="columnDefs"

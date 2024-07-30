@@ -7,3 +7,22 @@
 .category-item.active{
  background-color: var(--theme-color-secondary--hover);
 }
+.category-list{
+  max-height: 400px;
+}
+.mobile-filter-btn{
+  display: none;
+}
+.category-list.expanded {
+  max-height: 220px !important;
+}
+
+@media screen and (max-width:980px){
+  .category-list{
+    max-height: 0px;
+    margin-bottom: 3rem;
+  }
+  .mobile-filter-btn{
+    display: block;
+  }
+}

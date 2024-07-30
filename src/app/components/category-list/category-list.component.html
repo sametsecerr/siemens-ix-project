@@ -1,11 +1,18 @@
-<ix-content style="max-height: 400px;">
-<div class="d-flex flex-column">
-  <div
-  *ngFor="let category of categories"
-  class="category-item rounded mb-1 mt-1 cursor-pointer"
-  [class.active]="category.id === selectedCategoryId"
-  (click)="selectCategory(category.id)">
-  {{ category.name }}
+<div class="d-flex flex-column gap-3 mt-3">
+  <div class="mobile-filter-btn" (click)="toggleCategoryList()">
+    <ix-content>
+      <ix-icon-button icon="filter" variant="primary"></ix-icon-button>
+    </ix-content>
+  </div>
+  <ix-content class="category-list" [ngClass]="{'expanded': isExpanded, 'collapsed': !isExpanded}">
+    <div class="d-flex flex-column">
+      <div
+        *ngFor="let category of categories"
+        class="category-item rounded mb-1 mt-1 cursor-pointer"
+        [class.active]="category.id === selectedCategoryId"
+        (click)="selectCategory(category.id)">
+        {{ category.name }}
+      </div>
+    </div>
+  </ix-content>
 </div>
-</div>
-</ix-content>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
- import { BlindComponent } from './components/blind/blind.component';
+import { BlindComponent } from './components/blind/blind.component';
 import { FormComponent } from './components/form/form.component';
 import { IxModule } from '@siemens/ix-angular';
 import { ToastComponent } from './components/toast/toast.component';
@@ -21,9 +21,10 @@ import { SelectComponent } from './components/select/select.component';
 import { CookieService } from 'ngx-cookie-service';
 import { DetailHeaderComponent } from './components/detail-header/detail-header.component';
 import { ProductDetailFormComponent } from './components/product-detail-form/product-detail-form.component';
-import { AgGridComponent } from './components/ag-grid/ag-grid.component';
 import { AgGridModule } from 'ag-grid-angular';
-
+import '@siemens/ix-aggrid/dist/ix-aggrid/ix-aggrid.css';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { AgGridModule } from 'ag-grid-angular';
     HomeComponent,
     ProductListComponent,
     ProductDetailComponent,
-     BlindComponent,
+    BlindComponent,
     FormComponent,
     ToastComponent,
     FavoritesComponent,
@@ -42,7 +43,8 @@ import { AgGridModule } from 'ag-grid-angular';
     SelectComponent,
     DetailHeaderComponent,
     ProductDetailFormComponent,
-    AgGridComponent,
+    SearchInputComponent,
+    EmptyStateComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,10 +53,10 @@ import { AgGridModule } from 'ag-grid-angular';
     FormsModule,
     ReactiveFormsModule,
     IxModule.forRoot(),
+    AgGridModule
   ],
   providers: [
     CustomToastService,
-    provideClientHydration(),
     CookieService
   ],
   bootstrap: [AppComponent]

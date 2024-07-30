@@ -1,25 +1,79 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import productsData from '../../../../public/assest/data/product-data.json';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ColDef, ICellRendererParams } from 'ag-grid-community';
+import { ModalService } from '@siemens/ix-angular';
+import { CookieService } from 'ngx-cookie-service';
+
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  @ViewChild('customModal', { read: TemplateRef }) customModalRef!: TemplateRef<any>;
+
   products = productsData;
   filteredProducts = productsData;
   searchQuery: string = '';
   selectedCategory: string = 'all-products';
   sortOption: string = 'reviews';
+  selectedTab: number = 0;
+  quickFilterText: string = '';
+  isFavorite: boolean = false;
+  selectedProduct: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  columnDefs: ColDef[] = [
+    { headerName: 'Product ID', field: 'product_id', sortable: true, filter: true },
+    {
+      headerName: 'Name',
+      field: 'name',
+      sortable: true,
+      filter: true,
+      cellRenderer: (params: ICellRendererParams) => {
+        const imgUrl = params.data.photo;
+        const name = params.value;
+        return `<div style="display: flex; align-items: center;">
+                  <img src="${imgUrl}" style="width: 40px;min-width:40px;max-width:40px;min-height:40px;max-height:40px;object-fit:cover; height: 40px; margin-right: 8px;" />
+                  <span>${name}</span>
+                </div>`;
+      }
+    },
+    { headerName: 'Category', field: 'category', sortable: true, filter: true },
+    { headerName: 'Price', field: 'price', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'Description', field: 'description', sortable: true, filter: true },
+    { headerName: 'In Stock', field: 'in_stock', sortable: true, filter: true },
+    { headerName: 'Rating', field: 'rating', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'Reviews', field: 'reviews', sortable: true, filter: 'agNumberColumnFilter' },
+    { headerName: 'Discount', field: 'discount', sortable: true, filter: 'agNumberColumnFilter' },
+  ];
 
-  ngOnInit(): void {
+  rowData = this.products;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private modalService: ModalService,
+    private cookieService: CookieService
+  ) {}ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.selectedCategory = params['category'] || 'all-products';
+      const category = params['category'] || 'all-products';
+      this.selectedCategory = category;
       this.filterProducts();
     });
+
+    this.route.url.subscribe(url => {
+      const path = url[1]?.path;
+      this.selectedTab = path === 'grid' ? 0 : 1;
+    });
+  }
+
+  changeTab(tabIndex: number) {
+    this.selectedTab = tabIndex;
+    const category = this.selectedCategory || 'all-products';
+    const path = tabIndex === 0 ? 'grid' : 'aggrid';
+    this.router.navigate([`/products/${path}/${category}`]);
   }
 
   onSearchChange(query: string) {
@@ -33,6 +87,10 @@ export class ProductListComponent implements OnInit {
   }
 
   onCategoryChange(categoryId: number) {
+    if (this.selectedTab !== 0) {
+      return;
+    }
+
     const categories = [
       { id: 0, name: 'All Products', path: 'all-products' },
       { id: 1, name: 'Electronics', path: 'electronics' },
@@ -60,10 +118,10 @@ export class ProductListComponent implements OnInit {
 
     const category = categories.find(cat => cat.id === categoryId);
     if (category) {
-      this.router.navigate([`/products/${category.path}`]);
+      const path = this.selectedTab === 0 ? 'grid' : 'aggrid';
+      this.router.navigate([`/products/${path}/${category.path}`]);
     }
   }
-
   filterProducts() {
     let filtered = this.products;
 
@@ -128,11 +186,69 @@ export class ProductListComponent implements OnInit {
     return category ? category.id : 0;
   }
 
+  onQuickFilterChanged(filterText: string) {
+    this.quickFilterText = filterText;
+  }
+  async onRowClicked(event: any) {
+    const product = event.data;
+    this.selectedProduct = product;
+    this.isFavorite = this.checkIfFavorite(product);
 
-  selectedTab = 0;
+    const instance = await this.modalService.open({
+      content: this.customModalRef,
+      data: { isFavorite: this.isFavorite, product }
+    });
 
-  changeTab(tabIndex: number) {
-    this.selectedTab = tabIndex;
+    instance.onClose.on((action) => {
+      if (action === 'view') {
+        this.viewProduct(product.product_id);
+      } else if (action === 'favorite') {
+        this.toggleFavorite();
+      } else if (action === 'review') {
+        this.openReviewModal();
+      }
+    });
+  }
+  toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+    let favoriteProducts = this.getFavoriteProducts();
+
+    if (this.isFavorite) {
+      favoriteProducts.push(this.selectedProduct);
+      console.log('Product added to favorites:', this.selectedProduct);
+    } else {
+      favoriteProducts = favoriteProducts.filter((p: any) => p.product_id !== this.selectedProduct.product_id);
+      console.log('Product removed from favorites:', this.selectedProduct);
+    }
+
+    this.cookieService.set('favorite_products', JSON.stringify(favoriteProducts));
   }
 
-}
+  checkIfFavorite(product: any): boolean {
+    const favoriteProducts = this.getFavoriteProducts();
+    return favoriteProducts.some((p: any) => p.product_id === product.product_id);
+  }
+
+  getFavoriteProducts(): any[] {
+    const favoriteProducts = this.cookieService.get('favorite_products');
+    return favoriteProducts ? JSON.parse(favoriteProducts) : [];
+  }
+
+        viewProduct(productId: string) {
+          this.router.navigate(['/product-detail'], { queryParams: { productId } });
+        }
+
+        @ViewChild('reviewModal', { read: TemplateRef }) reviewModalRef!: TemplateRef<any>;
+
+        async openReviewModal() {
+          const instance = await this.modalService.open({
+            content: this.reviewModalRef,
+            data: this.selectedProduct,
+            size: '840'
+          });
+
+          instance.onClose.on(() => {
+          });
+        }
+
+        }

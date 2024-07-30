@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -7,12 +7,16 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnChanges {
   @Input() product: any;
   isFavorite: boolean = false;
 
-  constructor(private cookieService: CookieService, private router: Router) {
-    this.checkIfFavorite();
+  constructor(private cookieService: CookieService, private router: Router) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['product']) {
+      this.checkIfFavorite();
+    }
   }
 
   getStarArray(rating: number) {

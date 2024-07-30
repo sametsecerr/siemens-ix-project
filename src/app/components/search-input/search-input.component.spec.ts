@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgGridComponent } from './ag-grid.component';
+import { SearchInputComponent } from './search-input.component';
 
-describe('AgGridComponent', () => {
-  let component: AgGridComponent;
-  let fixture: ComponentFixture<AgGridComponent>;
+describe('SearchInputComponent', () => {
+  let component: SearchInputComponent;
+  let fixture: ComponentFixture<SearchInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AgGridComponent]
+      declarations: [SearchInputComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AgGridComponent);
+    fixture = TestBed.createComponent(SearchInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

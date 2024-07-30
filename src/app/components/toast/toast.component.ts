@@ -6,7 +6,7 @@ import { CustomToastService } from './toast.service';
   template: `
     <ng-template #customToast let-toast>
       <div>
-        <div>İşlem Başarılı</div>
+      <div>Operation Successful</div>
       </div>
     </ng-template>
   `,

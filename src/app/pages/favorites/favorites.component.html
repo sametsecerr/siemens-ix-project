@@ -1,7 +1,7 @@
 <div class="favorite-products">
   <h2>Your Favorite Products</h2>
   <div *ngIf="favoriteProducts.length === 0" class="d-flex align-items-center justify-content-center">
-    <p class="text-center">No favorite products found.</p>
+    <app-empty-state></app-empty-state>
   </div>
   <div *ngIf="favoriteProducts.length > 0">
     <ix-layout-grid>

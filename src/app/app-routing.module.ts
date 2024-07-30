@@ -9,8 +9,9 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'products', redirectTo: '/products/all-products', pathMatch: 'full' },
-  { path: 'products/:category', component: ProductListComponent },
+  { path: '', redirectTo: '/products/grid/all-products', pathMatch: 'full' },
+  { path: 'products/grid/:category', component: ProductListComponent },
+  { path: 'products/aggrid/:category', component: ProductListComponent },
   { path: 'product-detail', component: ProductDetailComponent },
   { path: 'favorites', component: FavoritesComponent }
 

@@ -18,13 +18,13 @@ export class ProductDetailComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const productId = params['productId'];
       if (!productId) {
-        this.router.navigate(['/products/all-products']);
+        this.router.navigate(['/products/grid/all-products']);
         return;
       }
 
       this.product = productsData.find(p => p.product_id === productId);
       if (!this.product) {
-        this.router.navigate(['/products/all-products']);
+        this.router.navigate(['/products/grid/all-products']);
       } else {
         this.checkIfFavorite();
       }
@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onBackButtonClick() {
-    this.router.navigate(['/products']);
+    this.router.navigate(['/products/grid/all-products']);
   }
 
   getDiscountedPrice(): string {

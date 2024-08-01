@@ -16,7 +16,7 @@
     </div>
     <ix-layout-grid>
       <ix-row *ngIf="filteredProducts.length > 0">
-        <ix-col size="6" [sizeLg]="3" sizeMd="4" *ngFor="let product of filteredProducts">
+        <ix-col size="12" [sizeLg]="3" sizeMd="4" *ngFor="let product of filteredProducts">
           <app-product-card class="h-100 d-block" [product]="product"></app-product-card>
         </ix-col>
       </ix-row>
